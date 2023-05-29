@@ -31,8 +31,9 @@
     name: nginx
     state: installed
     
-- name: Remove the old conetent
-  ansible.builtin.file: /usr/share/nginx/html
+- name: Remove the old conent
+  ansible.builtin.file: 
+  path: /usr/share/nginx/html
   state: absent
   
 - name: downloading file and extracting file
