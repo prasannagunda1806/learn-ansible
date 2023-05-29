@@ -1,4 +1,4 @@
--name: run roboshop project
- hosts: all
- roles: 
+- name: run roboshop project
+  hosts: all
+  roles: 
    - "{{ role_name }}"
