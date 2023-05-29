@@ -47,14 +47,8 @@
     dest: /usr/share/nginx/html  
     remote_src: yes
     
-- name: Start service nginx, if not started
-  ansible.builtin.service:
-    name: nginx
-    state: started
-    enabled: yes
     
-    
-- name: copying rooshop.conf file
+- name: copying roboshop.conf file
   ansible.builtin.copy:
     src: roboshop.conf
     dest: /etc/nginx/default.d/roboshop.conf
@@ -62,5 +56,6 @@
 - name: Start service nginx, if not started
   ansible.builtin.service:
     name: nginx
-    state: restarted    
+    state: started
+    enabled: yes
     
