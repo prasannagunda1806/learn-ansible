@@ -1,4 +1,4 @@
 -name: run roboshop project
 -hosts: all
  roles: 
-   -role: {{role_name}}
+   - "{{role_name}}"
