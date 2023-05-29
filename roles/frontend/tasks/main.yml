@@ -1,0 +1,3 @@
+-name: frontend 
+ ansible.uiltin.debug:
+  -msg: {{A}} 
