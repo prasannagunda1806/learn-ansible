@@ -36,7 +36,7 @@
     path: /usr/share/nginx/html
     state: absent
   
-  - name: create application directory
+- name: create application directory
   ansible.builtin.file: 
     path: /usr/share/nginx/html
     state: directory
