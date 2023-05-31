@@ -54,7 +54,7 @@
     state: installed
     
 - name: Load schema
-  ansible.builtin.shell: mongo --host mongodb-dev.devopsprasanna1.store </app/schema/catalogue.js
+  ansible.builtin.shell: mongo --host 172.31.86.129 </app/schema/catalogue.js
   
 - name: Start service catalogue, if not started
   ansible.builtin.systemd:
