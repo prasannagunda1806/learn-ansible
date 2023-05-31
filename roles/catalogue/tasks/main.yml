@@ -7,10 +7,10 @@
     state: installed
     
 - name: Create application user
-    user:
-      name: roboshop
-      state: present
-      shell: /bin/bash
+  user:
+     name: roboshop
+     state: present
+     shell: /bin/bash
       
 - name: Create /app directory
       file:
