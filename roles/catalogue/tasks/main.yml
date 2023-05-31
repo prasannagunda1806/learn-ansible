@@ -30,8 +30,8 @@
         
 - name: copy catalogue service file
   ansible.builtin.copy:
-    src: mongo.repo
-    dest: /etc/yum.repos.d/mongo.repo
+    src: catalogue.service
+    dest: /etc/systemd/system/catalogue.service
         
 - name: deamon reload
   ansible.builtin.systemd:
@@ -43,7 +43,10 @@
     state: restarted
     enabled: yes
     
-
+- name: copy mongo.repo file
+  ansible.builtin.copy:
+    src: mongo.repo
+    dest: /etc/yum.repos.d/mongo.repo
     
 - name:  install mongodb-client
   ansible.builtin.yum: 
