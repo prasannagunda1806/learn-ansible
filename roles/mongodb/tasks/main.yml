@@ -1,5 +1,7 @@
  - name: Include repo file
-     include: /root/learn-ansible/roles/mongodb/files/mongo.repo
+     ansible.builtin.import_role: 
+       name: files
+       tasks_from: mongo.repo
 
 
 #- name: Include repo file    
