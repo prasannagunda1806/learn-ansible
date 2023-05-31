@@ -13,9 +13,9 @@
      shell: /bin/bash
       
 - name: Create /app directory
-      file:
-        path: /app
-        state: directory
+  file:
+     path: /app
+     state: directory
     
 - name: downloading file and extracting file
   ansible.builtin.unarchive:
@@ -24,9 +24,9 @@
     remote_src: yes
     
 - name: Install npm package
-      yum:
-        name: npm 
-        state: present
+  yum:
+     name: npm 
+     state: present
         
 - name: copy catalogue service file
   ansible.builtin.copy:
