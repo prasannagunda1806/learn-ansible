@@ -1,3 +1,6 @@
+ - name: Include repo file
+      include: files/mongo.repo
+
 - name: mongodb
   ansible.builtin.yum: 
     name: mongodb-org
