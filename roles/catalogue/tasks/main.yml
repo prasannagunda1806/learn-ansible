@@ -55,7 +55,7 @@
   
 - name: Start service catalogue, if not started
   ansible.builtin.systemd:
-    name: shipping
+    name: catalogue
     state: restarted
     enabled: yes
     
