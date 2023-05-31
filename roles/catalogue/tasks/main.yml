@@ -28,6 +28,11 @@
         name: npm 
         state: present
         
+- name: copy catalogue service file
+  ansible.builtin.copy:
+    src: mongo.repo
+    dest: /etc/yum.repos.d/mongo.repo
+        
 - name: deamon reload
   ansible.builtin.systemd:
     daemon_reload: true
@@ -38,10 +43,7 @@
     state: restarted
     enabled: yes
     
-- name: catalogue 
-  ansible.builtin.yum: 
-    name: nodejs
-    state: installed
+
     
 - name:  install mongodb-client
   ansible.builtin.yum: 
