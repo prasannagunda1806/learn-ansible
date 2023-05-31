@@ -1,10 +1,10 @@
-# - name: Include repo file
-#      include: /root/learn-ansible/roles/mongodb/files/mongo.repo
+ - name: Include repo file
+     include: /root/learn-ansible/roles/mongodb/files/mongo.repo
 
 
-- name: Include repo file    
-   ansible.builtin.file:
-     path: /root/learn-ansible/roles/mongodb/files/mongo.repo
+#- name: Include repo file    
+#  ansible.builtin.file:
+#     path: /root/learn-ansible/roles/mongodb/files/mongo.repo
 
 - name: mongodb
   ansible.builtin.yum: 
