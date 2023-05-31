@@ -3,12 +3,12 @@
        src: mongo-repo
        dest: /etc/yum.repos.d/mongo.repo
 
-- name: mongodb
-  ansible.builtin.yum: 
-    name: mongodb-org
-    state: installed
+ - name: mongodb
+   ansible.builtin.yum: 
+      name: mongodb-org
+      state: installed
     
-- name: update listen address
+ - name: update listen address
   ansible.builtin.lineinfile:
     path: /etc/mongod.conf
     search_string: '127.0.0.1'
