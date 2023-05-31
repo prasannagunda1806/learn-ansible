@@ -1,9 +1,7 @@
  - name: Include repo file
-     ansible.builtin.copy: 
+   ansible.builtin.copy: 
        src: mongo-repo
        dest: /etc/yum.repos.d/mongo.repo
-
-
 
 - name: mongodb
   ansible.builtin.yum: 
