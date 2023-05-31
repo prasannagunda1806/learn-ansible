@@ -14,8 +14,8 @@
      search_string: '127.0.0.1'
      line: 0.0.0.0
     
-- name: Start service mongod, if not started
-  ansible.builtin.systemd:
-    name: mongod
-    state: restarted
-    enabled: yes
+ - name: Start service mongod, if not started
+   ansible.builtin.systemd:
+     name: mongod
+     state: restarted
+     enabled: yes
