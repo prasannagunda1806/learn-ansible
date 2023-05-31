@@ -1,0 +1,21 @@
+- name: rabitmq
+  ansible.builtin.yum: 
+    name: 
+      - https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm
+      - https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh
+      - rabbitmq-server
+    state: installed
+    
+- name: rabbitmq
+  ansible.builtin.systemd:
+    name: rabbitmq-server
+    state: restarted
+    enabled: yes
+    
+- name: Add RabbitMQ user
+      command: rabbitmqctl add_user roboshop roboshop123
+      args:
+        creates: /app/credentials
+
+    - name: Set RabbitMQ permissions
+      command: rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"

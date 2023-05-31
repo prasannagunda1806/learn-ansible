@@ -1,0 +1,16 @@
+- name: mongodb
+  ansible.builtin.yum: 
+    name: mongodb-org
+    state: installed
+    
+- name: update listen address
+  ansible.builtin.lineinfile:
+    path: /etc/mongod.conf
+    search_string: '127.0.0.1'
+    line: 0.0.0.0
+    
+- name: Start service mongod, if not started
+  ansible.builtin.systemd:
+    name: mongod
+    state: restarted
+    enabled: yes

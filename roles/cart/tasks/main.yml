@@ -1,7 +1,7 @@
 - name: Setup NodeJS repos
   ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
   
-- name: catalogue 
+- name: cart
   ansible.builtin.yum: 
     name: nodejs
     state: installed
@@ -16,10 +16,10 @@
       file:
         path: /app
         state: directory
-    
+        
 - name: downloading file and extracting file
   ansible.builtin.unarchive:
-    src: https://roboshop-artifacts.s3.amazonaws.com/catalogue.zip
+    src: https://roboshop-artifacts.s3.amazonaws.com/cart.zip 
     dest: /app  
     remote_src: yes
     
@@ -27,33 +27,14 @@
       yum:
         name: npm 
         state: present
-        
+
 - name: deamon reload
   ansible.builtin.systemd:
     daemon_reload: true
     
 - name: Start service catalogue, if not started
   ansible.builtin.systemd:
-    name: catalogue
-    state: restarted
-    enabled: yes
-    
-- name: catalogue 
-  ansible.builtin.yum: 
-    name: nodejs
-    state: installed
-    
-- name:  install mongodb-client
-  ansible.builtin.yum: 
-    name: mongodb-org-shell
-    state: installed
-    
-- name: Load schema
-  ansible.builtin.shell: mongo --host mongodb-dev.devopsprasanna1.store </app/schema/{{component}}.js
-  
-- name: Start service catalogue, if not started
-  ansible.builtin.systemd:
-    name: shipping
+    name: cart
     state: restarted
     enabled: yes
     

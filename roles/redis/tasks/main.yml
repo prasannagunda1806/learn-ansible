@@ -1,0 +1,14 @@
+- name: redis
+  ansible.builtin.yum: 
+    name: 
+      - https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y
+      - redis:remi-6.2
+      - redis -y 
+    state: installed
+    
+- name: Start service redis, if not started
+  ansible.builtin.systemd:
+    name: redis
+    state: restarted
+    enabled: yes
+
