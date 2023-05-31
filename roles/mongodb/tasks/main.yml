@@ -1,12 +1,9 @@
  - name: Include repo file
-     ansible.builtin.import_role: 
-       name: files
-       tasks_from: mongo.repo
+     ansible.builtin.copy: 
+       src: mongo-repo
+       dest: /etc/yum.repos.d/mongo.repo
 
 
-#- name: Include repo file    
-#  ansible.builtin.file:
-#     path: /root/learn-ansible/roles/mongodb/files/mongo.repo
 
 - name: mongodb
   ansible.builtin.yum: 
