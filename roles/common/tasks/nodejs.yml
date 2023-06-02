@@ -1,0 +1,19 @@
+- name: Setup NodeJS repos
+  ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
+  
+- name: install nodejs
+  ansible.builtin.yum: 
+    name: nodejs
+    state: installed
+    
+- name : importing pre_reqsite tasks
+  ansible.builtin.import_tasks:
+    file: app-prereq.yml
+    
+- name: Install nodejs packages based on package.json.
+  community.general.npm:
+    path: /app
+    
+- name : importing schema_setup
+  ansible.builtin.import_tasks:
+    file: schema-setup.yml

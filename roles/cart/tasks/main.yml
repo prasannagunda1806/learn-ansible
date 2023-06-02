@@ -1,32 +1,8 @@
-- name: Setup NodeJS repos
-  ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
-  
-- name: cart
-  ansible.builtin.yum: 
-    name: nodejs
-    state: installed
+- name: load nodejs
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: nodejs.yml
     
-- name: Create application user
-    user:
-      name: roboshop
-      state: present
-      shell: /bin/bash
-      
-- name: Create /app directory
-      file:
-        path: /app
-        state: directory
-        
-- name: downloading file and extracting file
-  ansible.builtin.unarchive:
-    src: https://roboshop-artifacts.s3.amazonaws.com/cart.zip 
-    dest: /app  
-    remote_src: yes
-    
-- name: Install npm package
-      yum:
-        name: npm 
-        state: present
 
 - name: deamon reload
   ansible.builtin.systemd:
