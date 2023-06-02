@@ -1,14 +1,23 @@
 - name: redis
   ansible.builtin.yum: 
-    name: 
-      - https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y
-      - redis:remi-6.2
-      - redis -y 
+    name: https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y
     state: installed
+    disale_gpg_check : yes
     
-- name: Start service redis, if not started
+- name: redis
+  ansible.builtin.dnf: 
+    name: "@redis:remi-6.2"
+    state: installed
+
+- name: update listen address
+   ansible.builtin.replace:
+     path: /etc/redis.conf
+     regexp: '127.0.0.1'
+     replace: '0.0.0.0'
+     
+- name: Start service redis
   ansible.builtin.systemd:
     name: redis
-    state: restarted
+    state: started
     enabled: yes
 
