@@ -17,3 +17,4 @@
 - name : importing schema_setup
   ansible.builtin.import_tasks:
     file: schema-setup.yml
+  when: schema_setup is defined

@@ -2,15 +2,3 @@
   ansible.builtin.import_role:
     name: common
     tasks_from: nodejs.yml
-    
-
-- name: deamon reload
-  ansible.builtin.systemd:
-    daemon_reload: true
-    
-- name: Start service catalogue, if not started
-  ansible.builtin.systemd:
-    name: cart
-    state: restarted
-    enabled: yes
-    
