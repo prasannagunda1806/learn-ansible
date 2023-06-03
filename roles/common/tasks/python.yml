@@ -1,0 +1,25 @@
+- name: Install Python
+  ansible.builtinyum:
+    name:
+      - python36
+      - gcc
+      - python3-devel
+    state: installed
+    
+- name : importing pre_reqsite tasks
+  ansible.builtin.import_tasks:
+    file: app-prereq.yml
+    
+- name: Install python dependences
+  ansible.builtin.pip: 
+    requirements: /app/requirements.txt
+    executable: pip3.6
+    
+- name : importing schema_setup
+  ansible.builtin.import_tasks:
+    file: schema-setup.yml
+  when: schema_setup is defined
+  
+- name: systemd setup
+  ansible.builtin.import_tasks: 
+    file: systemd-setup.yml

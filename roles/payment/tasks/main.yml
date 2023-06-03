@@ -1,36 +1,4 @@
-- name: payment 
-  ansible.builtin.yum: 
-    name: python36 gcc python3-devel
-    state: installed
-    
-- name: Create application user
-    user:
-      name: roboshop
-      state: present
-      shell: /bin/bash
-      
-- name: Create /app directory
-      file:
-        path: /app
-        state: directory
-    
-- name: downloading file and extracting file
-  ansible.builtin.unarchive:
-    src: https://roboshop-artifacts.s3.amazonaws.com/payment.zip
-    dest: /app  
-    remote_src: yes
-    
-- name: Install pip package
-      yum:
-        name: pip3.6 
-        state: present
-        
-- name: deamon reload
-  ansible.builtin.systemd:
-    daemon_reload: true
-    
-- name: Start service catalogue, if not started
-  ansible.builtin.systemd:
-    name: payment
-    state: restarted
-    enabled: yes
+- name: load python
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: python.yml
