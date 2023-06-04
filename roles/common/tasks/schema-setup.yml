@@ -1,11 +1,10 @@
 - name: mongodb schema
   block:
-  when: schema_type == "mongo"
     - name: setup mongod repo files
       ansible.builtin.copy: 
         src: mongodb.repo
         dest: /etc/systemd/system/mongodb.repo
-    b
+    
     - name: install mongodb client
       ansible.builtin.yum:
         name: mongodb-org-shell
@@ -13,7 +12,7 @@
         
     - name: load schema
       ansible.builtin.shell: mongo --host mongodb-dev.devopsprasanna1.store </app/schema/{{component}}.js
-
+   when: schema_type == "mongo"
 - name: mysql schema
   block:
   when: schema_type == "mysql"
