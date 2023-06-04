@@ -1,7 +1,6 @@
 - name: mongodb schema
   block:
     - name: setup mongod repo files
-      when: schema_type == "mongo"
       ansible.builtin.copy: 
         src: mongo.repo
         dest: /etc/yum.repos.d/mongo.repo
@@ -13,10 +12,10 @@
         
     - name: load schema
       ansible.builtin.shell: mongo --host mongodb-dev.devopsprasanna1.store </app/schema/{{component}}.js
+      when: schema_type == "mongo"
       
 - name: mysql schema
   block:
-    when: schema_type == "mysql"
     - name: install mysql client
       ansible.builtin.yum:
         name: mysql
@@ -24,5 +23,5 @@
         
     - name: load schema
       ansible.builtin.shell: mysql -h mysql-dev.devopsprasanna1.store -uroot -pRoboShop@1 < /app/schema/{{component}}.sql 
-  
+      when: schema_type == "mysql"
       
