@@ -10,10 +10,10 @@
     state: installed
 
 - name: update listen address
-   ansible.builtin.replace:
-     path: /etc/redis.conf
-     regexp: '127.0.0.1'
-     replace: '0.0.0.0'
+  ansible.builtin.replace:
+    path: /etc/redis.conf
+    regexp: '127.0.0.1'
+    replace: '0.0.0.0'
      
 - name: Start service redis
   ansible.builtin.systemd:
