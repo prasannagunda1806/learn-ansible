@@ -1,27 +1,22 @@
-
 - name: setup mysql repository
   ansible.builtin.copy:
     src: mysql.repo
     dest: /etc/yum.repos.d/mysql.repo
 
-#- name: Disable MySQL repository
-#     yum:
- #       name: mysql
-  #      state: absent
 - name: Disable MySQL repository
-  ansible.builtin.shell: dnf module disable mysql -y 
+  ansible.builtin.shell: dnf module disable mysql -y
 
 - name: install mysql
-  ansible.builtin.yum: 
+  ansible.builtin.yum:
     name: mysql-community-server
     state: installed
-    
+
 - name: Start service mysql, if not started
   ansible.builtin.systemd:
     name: mysql
     state: started
     enabled: yes
-    
-- name: settingup password
+
+- name: setting up password
   ansible.builtin.shell: mysql_secure_installation --set-root-pass RoboShop@1
   ignore_errors: true
