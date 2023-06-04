@@ -5,7 +5,7 @@
 - name: delete old app directory
   ansible.builtin.file:
     path: /app
-    state: abscent
+    state: absent
       
 - name: Create /app directory
   ansible.builtin.file:
