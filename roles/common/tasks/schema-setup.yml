@@ -16,8 +16,8 @@
       
 - name: mysql schema
   block:
-  when: schema_type == "mysql"
     - name: install mysql client
+      when: schema_type == "mysql"
       ansible.builtin.yum:
         name: mysql
         state: installed
